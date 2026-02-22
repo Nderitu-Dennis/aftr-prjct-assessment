@@ -31,7 +31,7 @@ public class FarmerApplication {
     @NotBlank(message = "Aadhaar is mandatory")
     @Size(min = 12, max = 12, message = "Aadhaar must be exactly 12 digits")
     @Pattern(regexp = "\\d{12}", message = "Numbers only")
-    @Column(name="aadhar_no")
+    @Column(name="aadhaar_no")
     private String aadhaarNo;
 
     @NotBlank(message = "Father Name is mandatory")

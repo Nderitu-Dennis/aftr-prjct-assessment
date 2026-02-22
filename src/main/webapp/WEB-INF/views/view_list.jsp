@@ -16,10 +16,24 @@
 </head>
 
 <body>
+
+<div class="container mt-4">
+
+<c:if test="${msg ne null}">
+			<div id="alertId" class="alert alert-success">
+				<span class="font-weight-bold">Message : </span> ${msg}
+			</div>
+</c:if>
+
+		<div class="h3 text-primary mt-2">Crop Insurance Applications</div>
+
+
 <div>
-<table class="table table-bordered mt-4">
+
+<table class="table table-bordered table-striped mt-4">
     <thead class="thead-dark">
         <tr>
+        <th>Sl.#</th>
             <th>Farmer Name</th>
             <th>Aadhaar</th>
             <th>Season</th>
@@ -29,8 +43,9 @@
         </tr>
     </thead>
     <tbody>
-        <c:forEach items="${applications}" var="app">
+        <c:forEach items="${applications}" var="app" varStatus="counter">
             <tr>
+            	<td>${counter.count}</td>
                 <td>${app.farmerName}</td>
                 <td>${app.aadhaarNo}</td>
                 <td>${app.season.seasonName}</td>
@@ -44,6 +59,10 @@
         </c:forEach>
     </tbody>
 </table>
+</div>
+	<div class="h4 text-warn m-2">
+		Click <a href="/insurance/apply"> here </a> to apply for crop insurance
+	</div>
 </div>
 
 <script src="https://code.jquery.com/jquery-2.2.4.js"
