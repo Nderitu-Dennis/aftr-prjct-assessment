@@ -35,10 +35,12 @@
         <tr>
         <th>Sl.#</th>
             <th>Farmer Name</th>
-            <th>Aadhaar</th>
+            <th>Aadhaar No</th>
+            <th>Father Name</th>
+            <th>Address</th>
             <th>Season</th>
             <th>Crop</th>
-            <th>Category</th>
+            <th>Farmer Category</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -48,6 +50,8 @@
             	<td>${counter.count}</td>
                 <td>${app.farmerName}</td>
                 <td>${app.aadhaarNo}</td>
+                <td>${app.fatherName}</td>
+                <td>${app.address}</td>
                 <td>${app.season.seasonName}</td>
                 <td>${app.crop.cropName}</td>
                 <td>${app.farmerCategory}</td>

@@ -17,13 +17,30 @@
 
 <div class="container mt-1">
 
+<!--success msg-->
     <c:if test="${msg ne null}">
-        <div class="alert alert-success">${msg}</div>
+        <div id="successAlert" class="alert alert-success" role="alert">
+        <span class="font-weight-bold"> Success: </span> ${msg}
+        </div>
     </c:if>
 
     <c:if test="${error ne null}">
-        <div class="alert alert-danger">${error}</div>
+        <div id="errorAlert" class="alert alert-danger">
+        <span class="font-weight-bold">Error: </span> ${error}
+        </div>
     </c:if>
+
+    <!--validation error msgs-->
+<c:if test="${validationErrors ne null}">
+        <div id="errorAlert" class='alert alert-danger' role="alert">
+            <ul>
+                <c:forEach var="err" items="${validationErrors}">
+                    <li>Error: ${err.defaultMessage}</li>
+                </c:forEach>
+            </ul>
+        </div>
+    </c:if>
+
 
     <div class="card">
         <div class="card-header bg-primary text-white">
@@ -160,24 +177,46 @@
                 </div>
 
                 <div class="m-1">
-                    <input type="submit" class="btn btn-success" value="Save">
-                    <input type="reset" class="btn btn-warning" value="Reset">
+                    <input type="submit" class="btn btn-success mx-4" value="Submit">
+                    <input type="reset" class="btn btn-danger" value="Clear">
                 </div>
 
             </form>
 
+             <div class="h4 text-center text-warn">
+                            Click <a href="/insurance/view"> here </a> to view insurance applications
+                        </div>
+
         </div>
+
     </div>
-
 </div>
 
-<div class="h3 text-center text-warn">
-    Click <a href="/insurance/view"> here </a> to view insurance applications
-</div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
 
 <script>
+     // auto hide success and error  msgs
+        document.addEventListener("DOMContentLoaded", function(){
+            var al = document.querySelector("#successAlert");
+            if(al != null){
+                setTimeout(() => { al.remove(); }, 3000);
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", function(){
+            var al = document.querySelector("#errorAlert");
+            if(al != null){
+                setTimeout(() => { al.remove(); }, 5000);
+            }
+        });
+    </script>
+
+
+<script>
+// AJAX
+
     $("#seasonId").change(function () {
         $.ajax({
             url: "/insurance/getCrops",

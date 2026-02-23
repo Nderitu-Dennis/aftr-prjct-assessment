@@ -43,6 +43,11 @@ public class CropInsuranceController {
             return "redirect:/insurance/apply";
         }
 
+        if(application.getCrop().getCropId() ==0){
+        rd.addFlashAttribute("error","Select a valid crop" );
+        return "redirect:/insurance/apply";
+        }
+
         String message = insuranceService.saveApplication(application);
         if (message.contains("Duplicate")) {
             rd.addFlashAttribute("error", message);
