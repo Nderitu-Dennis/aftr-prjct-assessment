@@ -36,7 +36,7 @@ public class FarmerApplication {
 
     @NotBlank(message = "Father Name is mandatory")
     @Size(max = 12)
-    @Pattern(regexp = "^[a-zA-Z0-9 ]+$", message = "Alphanumeric only")
+    @Pattern(regexp = "^[a-zA-Z0-9 ]+$", message = "Alphanumerics only")
     @Column(name = "father_name")
     private String fatherName;
 

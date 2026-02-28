@@ -22,8 +22,9 @@ public class CropInsuranceController {
 
     // application form
     @GetMapping("/apply")
-    public String showForm(Model model) {
+    public String showForm(Model model) { //Model-passes data frm controller to view
         model.addAttribute("seasons", insuranceService.getAllSeasons());
+        model.addAttribute("farmerApplication", new FarmerApplication());
         return "registration_form";
     }
 
@@ -39,7 +40,8 @@ public class CropInsuranceController {
     public String saveApplication(@Valid @ModelAttribute FarmerApplication application,
                                   BindingResult result, RedirectAttributes rd) {
         if (result.hasErrors()) {
-            rd.addFlashAttribute("validationErrors", result.getAllErrors());
+            rd.addFlashAttribute("org.springframework.validation.BindingResult.farmerApplication", result);
+            rd.addFlashAttribute("farmerApplication", application); // Keep user's input
             return "redirect:/insurance/apply";
         }
 

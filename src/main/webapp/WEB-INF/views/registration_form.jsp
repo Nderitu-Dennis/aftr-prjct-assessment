@@ -32,7 +32,7 @@
 
     <!--validation error msgs-->
 <c:if test="${validationErrors ne null}">
-        <div id="errorAlert" class='alert alert-danger' role="alert">
+        <div id="errorAlert" class="alert alert-danger" role="alert">
             <ul>
                 <c:forEach var="err" items="${validationErrors}">
                     <li>Error: ${err.defaultMessage}</li>
