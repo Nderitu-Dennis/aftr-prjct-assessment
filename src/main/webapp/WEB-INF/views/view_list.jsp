@@ -56,9 +56,11 @@
                 <td>${app.crop.cropName}</td>
                 <td>${app.farmerCategory}</td>
                 <td>
-                    <a href="/insurance/delete?id=${app.farmerId}" class="btn btn-danger btn-sm"
+                    <a href="/insurance/delete?id=${app.farmerId}" class="btn btn-outline-danger btn-sm mr-3"
                        onclick="return confirm('Delete this record?')">Delete</a>
+                       <a href="/insurance/edit?id=${app.farmerId}" class="btn btn-outline-primary btn-sm">Edit</a>
                 </td>
+
             </tr>
         </c:forEach>
     </tbody>

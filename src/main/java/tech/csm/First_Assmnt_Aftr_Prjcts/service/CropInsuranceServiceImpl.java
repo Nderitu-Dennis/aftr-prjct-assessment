@@ -54,4 +54,9 @@ public class CropInsuranceServiceImpl implements CropInsuranceService {
     public void deleteApplication(Integer farmerId) {
         farmerRepo.deleteById(farmerId);
     }
+
+    @Override
+    public FarmerApplication getApplicationById(Integer farmerId) {
+        return farmerRepo.findById(farmerId).orElse(null);
+    }
 }

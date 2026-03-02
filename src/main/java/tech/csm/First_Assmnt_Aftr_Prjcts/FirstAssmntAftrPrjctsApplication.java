@@ -7,8 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class FirstAssmntAftrPrjctsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FirstAssmntAftrPrjctsApplication.class, args);
+        SpringApplication.run(FirstAssmntAftrPrjctsApplication.class, args);
         System.out.println("app starting..");
-	}
+    }
+
 
 }

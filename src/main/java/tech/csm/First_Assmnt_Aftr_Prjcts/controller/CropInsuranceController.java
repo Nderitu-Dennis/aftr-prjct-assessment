@@ -73,4 +73,24 @@ public class CropInsuranceController {
         rd.addFlashAttribute("msg", "Application deleted successfully.");
         return "redirect:/insurance/view";
     }
+
+    @GetMapping("/edit")
+    public String editApplication (@RequestParam ("id") Integer farmerId,
+                                   Model model, RedirectAttributes rd){
+        //load existing application
+        FarmerApplication application = insuranceService.getApplicationById(farmerId);
+        if(application ==null){
+            rd.addFlashAttribute("Error","Application not found");
+            return "redirect:/insurance/view";
+        }
+
+//        pass data to the form as if applying/apply
+        model.addAttribute("farmerApplication", application);
+        model.addAttribute("seasons", insuranceService.getAllSeasons());
+        return "registration_form";
+/*
+        It fetches the record using farmerId.
+        Loads the same registration form (registration_form) used for creating new applications.
+            The form will now be pre-filled with existing data.*/
+    }
 }

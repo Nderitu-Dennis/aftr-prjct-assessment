@@ -51,6 +51,12 @@
 
             <form id="InsuranceApplication" action="/insurance/save" method="post">
 
+            <!--for editing-prefills id
+            When creating a new record, farmerApplication.farmerId is null- save new record
+            When editing, farmerApplication.farmerId has a value -edit/update
+            -->
+            <input type="hidden" name="farmerId" value="${farmerApplication.farmerId}" />
+
                 <!-- Season & Crop -->
                 <div class="row">
                     <div class="col-md-6 mb-3">
@@ -88,8 +94,9 @@
                                name="farmerName"
                                class="form-control"
                                maxlength="50"
+                               value="${farmerApplication.farmerName}"
                                required>
-                        <small class="text-secondary">
+                        <small class="form-text text-muted">
                             Max 50 characters, No special characters
                         </small>
                     </div>
@@ -101,15 +108,16 @@
                                class="form-control"
                                pattern="[0-9]{12}"
                                title="12 digits exactly"
+                               value="${farmerApplication.aadhaarNo}"
+
                                required>
-                        <small class="text-secondary">
+                        <small class="form-text text-muted">
                             Exactly 12 digits, Numbers only
                         </small>
                     </div>
 
                 </div>
 
-                <!-- Father Name + Farmer Category (Same Row) -->
                 <div class="row">
 
                     <div class="col-md-6 mb-3">
@@ -118,8 +126,10 @@
                                name="fatherName"
                                class="form-control"
                                maxlength="12"
-                               required>
-                        <small class="text-secondary">
+                               value="${farmerApplication.fatherName}"
+                               required
+                               >
+                        <small class="form-text text-muted">
                             Max 12 characters, Alphanumeric only
                         </small>
                     </div>
@@ -168,28 +178,28 @@
                         <textarea name="address"
                                   class="form-control"
                                   maxlength="250"
-                                  required>
+                                  required>${farmerApplication.address}
                         </textarea>
-                        <small class="text-secondary">
+                        <small class="form-text text-muted">
                             Max 250 characters, No special characters
                         </small>
                     </div>
                 </div>
 
-                <div class="m-1">
+                <div class="">
                     <input type="submit" class="btn btn-success mx-4" value="Submit">
                     <input type="reset" class="btn btn-danger" value="Clear">
                 </div>
 
+                 <div class="h4 text-center text-warn">
+                       Click <a href="/insurance/view"> here </a> to view insurance applications
+                 </div>
             </form>
-
-             <div class="h4 text-center text-warn">
-                            Click <a href="/insurance/view"> here </a> to view insurance applications
-                        </div>
-
         </div>
-
     </div>
+    <!--print farmer object
+    <h1>farmer data: </h1>
+    ${farmerApplication}-->
 </div>
 
 

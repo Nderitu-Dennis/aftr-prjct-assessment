@@ -12,4 +12,6 @@ public interface CropInsuranceService {
     String saveApplication(FarmerApplication application);
     List<FarmerApplication> getAllApplications();
     void deleteApplication(Integer farmerId);
+
+    FarmerApplication getApplicationById(Integer farmerId);
 }
